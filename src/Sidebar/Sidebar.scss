@@ -5,7 +5,7 @@
   background: var(--clr_main-1);
   padding-top: var(--padding_global);
   padding-bottom: var(--padding_global);
-  transition: transform 0.4s ease-in;
+  transition: flex 0.4s ease-in;
 
   &__toggle {
     cursor: pointer;
@@ -54,6 +54,7 @@
   }
   &__link {
     text-transform: capitalize;
+
     color: var(--white);
     transition: color ease 0.3s, transform ease-in-out 0.4s;
   }

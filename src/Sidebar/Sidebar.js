@@ -11,11 +11,18 @@ const Sidebar = () => {
   const { isSidebarOpen, closeSidebar, openSidebar } = useSidebarContext();
   useEffect(() => {
     if (!isSidebarOpen) {
-      sidebarRef.current.style.transform = 'translateX(-80%)';
+      sidebarRef.current.style.flex = '0.035';
+      listRef.current.style.display = 'none';
       listRef.current.style.opacity = '0';
     } else {
-      sidebarRef.current.style.transform = 'translateX(0)';
-      listRef.current.style.opacity = '1';
+      sidebarRef.current.style.flex = '0.2';
+      const timeout = setTimeout(() => {
+        listRef.current.style.display = 'block';
+        setTimeout(() => {
+          listRef.current.style.opacity = '1';
+        }, 100);
+      }, 300);
+      return () => clearTimeout(timeout);
     }
   }, [isSidebarOpen]);
 

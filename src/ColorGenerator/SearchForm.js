@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchForm = () => {
-  return <div></div>;
+  return <form className="generate-form"></form>;
 };
 
 export default SearchForm;
