@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACP,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,GAAG,CACX,UAAU,CAAE,iBAAiB,CAC9B",
+    "sources": [
+        "../../../scss/staticPages/Heading.scss"
+    ],
+    "names": [],
+    "file": "Heading.min.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,AAAC,CACV,IAAI,CAAE,GAAG,CACT,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,qBAAqB,CAC9B,UAAU,CAAE,OAAO,CACpB",
+    "sources": [
+        "../../../ColorGenerator/ColorGenerator.scss"
+    ],
+    "names": [],
+    "file": "ColorGenerator.min.css"
+}

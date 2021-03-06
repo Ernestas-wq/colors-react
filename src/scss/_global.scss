@@ -1,0 +1,17 @@
+:root {
+  --clr_main-1: #1a304e;
+  --clr_main-2: #e8ebee;
+  --white: #ffffff;
+  --text_dark: #293241;
+  --padding_global: 2rem;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.main {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}

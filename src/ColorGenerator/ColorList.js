@@ -5,10 +5,10 @@ const ColorList = () => {
   const { test } = useColorGeneratorContext();
   console.log(test);
   return (
-    <>
+    <section className="color-list">
       <SearchForm />
       <p>Hello from color list</p>
-    </>
+    </section>
   );
 };
 
