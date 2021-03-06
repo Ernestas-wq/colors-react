@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { GoSettings, GoHome } from 'react-icons/go';
 import { HiSave } from 'react-icons/hi';
+import { links } from './links';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useSidebarContext } from './context';
 
 const Sidebar = () => {
+  console.log(links);
   const sidebarRef = useRef(null);
   const listRef = useRef(null);
   const { isSidebarOpen, closeSidebar, openSidebar } = useSidebarContext();
@@ -35,26 +37,17 @@ const Sidebar = () => {
       )}
 
       <ul className="sidebar__list" ref={listRef}>
-        <li className="sidebar__item">
-          <GoHome />
-          <Link className="sidebar__link" to="/home">
-            home
-          </Link>
-        </li>
-
-        <li className="sidebar__item">
-          <GoSettings />
-          <Link className="sidebar__link" to="/color-generator">
-            color generator
-          </Link>
-        </li>
-
-        <li className="sidebar__item">
-          <HiSave />
-          <Link className="sidebar__link" to="/saved-colors">
-            saved colors
-          </Link>
-        </li>
+        {links.map(link => {
+          const { id, url, text, icon } = link;
+          return (
+            <li key={id} className="sidebar__item">
+              {icon}
+              <Link className="sidebar__link" to={url}>
+                {text}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

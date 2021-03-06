@@ -2,8 +2,92 @@
   -webkit-box-flex: 0.8;
       -ms-flex: 0.8;
           flex: 0.8;
-  height: 95vh;
+  min-height: 95vh;
   padding: var(--padding_global);
-  background: crimson;
+}
+
+.colors {
+  margin-top: 2rem;
+  display: -ms-grid;
+  display: grid;
+  gap: 0.75rem;
+  -ms-grid-columns: (minmax(180px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.colors__item {
+  height: 180px;
+  width: 180px;
+  color: var(--text_dark);
+}
+
+.colors__item--light {
+  color: var(--white);
+}
+
+.generator {
+  width: 60%;
+  max-width: var(--max-width);
+}
+
+.generator__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.generator__form button {
+  color: var(--clr_main-3);
+}
+
+.generator__input {
+  width: 100%;
+}
+
+.generator__input::-webkit-input-placeholder {
+  color: var(--clr_main-3);
+}
+
+.generator__input:-ms-input-placeholder {
+  color: var(--clr_main-3);
+}
+
+.generator__input::-ms-input-placeholder {
+  color: var(--clr_main-3);
+}
+
+.generator__input::placeholder {
+  color: var(--clr_main-3);
+}
+
+.generator__input, .generator__submit {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  letter-spacing: var(--spacing);
+  font-size: 1.5rem;
+  background: transparent;
+  color: var(--bg-main);
+  border-bottom: 3px solid var(--clr_main-3);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  outline: none;
+}
+
+.generator__input:focus {
+  border-bottom: 3px solid var(--soft_green);
+}
+
+.generator__input:focus + button {
+  border-bottom: 3px solid var(--soft_green);
+  color: var(--soft_green);
+}
+
+.generator__input--error:focus {
+  border-bottom: 3px solid var(--soft_red);
+}
+
+.generator__input--error:focus + button {
+  border-bottom: 3px solid var(--soft_red);
+  color: var(--soft_red);
 }
 /*# sourceMappingURL=ColorGenerator.css.map */

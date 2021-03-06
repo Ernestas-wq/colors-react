@@ -1,5 +1,5 @@
 .sidebar {
-  height: 95vh;
+  min-height: 95vh;
   -webkit-box-flex: 0.2;
       -ms-flex: 0.2;
           flex: 0.2;
@@ -26,7 +26,7 @@
           animation-play-state: paused;
 }
 
-.sidebar__close:hover {
+.sidebar__toggle:hover {
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }

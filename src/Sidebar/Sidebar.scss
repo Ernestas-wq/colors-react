@@ -1,5 +1,5 @@
 .sidebar {
-  height: 95vh;
+  min-height: 95vh;
   flex: 0.2;
   position: relative;
   background: var(--clr_main-1);
@@ -17,7 +17,7 @@
     animation: floating_arrow 1.2s ease-in-out infinite;
     animation-play-state: paused;
   }
-  &__close:hover {
+  &__toggle:hover {
     animation-play-state: running;
   }
   &__list {

@@ -1,8 +1,16 @@
 :root {
+  // #1d3557
   --clr_main-1: #1a304e;
   --clr_main-2: #e8ebee;
+  --clr_main-3: #1d3557;
+  --soft_green: #06d6a0;
+  --soft_blue: #118ab2;
+  --soft_pink: #ef476f;
+  --soft_red: #d90429;
   --white: #ffffff;
   --text_dark: #293241;
+  --max-width: 1170px;
+  --spacing: 0.1rem;
   --padding_global: 2rem;
 }
 body {
