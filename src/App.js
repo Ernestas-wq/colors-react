@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './staticPages/Home';
 function App() {
+  console.log('Testing');
   return (
     <>
       <Router>
