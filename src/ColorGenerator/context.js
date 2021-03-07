@@ -16,7 +16,7 @@ const initialState = {
   color: '',
   isError: false,
   isLoading: false,
-  list: [],
+  list: new Values('#118ab2').all(10),
 };
 
 const ColorGeneratorProvider = ({ children }) => {

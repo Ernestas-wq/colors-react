@@ -2,12 +2,12 @@
   width: 100%;
   height: 5vh;
   background: var(--clr_main-1);
-  padding: 10px;
   &__title {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     text-transform: uppercase;
+    padding: 10px;
     font-size: 1.5rem;
     p {
       font-family: 'Akaya Telivigala', cursive;

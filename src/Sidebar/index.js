@@ -4,7 +4,7 @@ import { SidebarProvider } from './context';
 const Index = () => {
   return (
     <SidebarProvider>
-      <Sidebar></Sidebar>
+      <Sidebar />
     </SidebarProvider>
   );
 };

@@ -1,28 +1,67 @@
 .color-list {
-  flex: 0.8;
+  flex: 0.965 1;
   min-height: 95vh;
   padding: var(--padding_global);
 }
 .colors {
   margin-top: 2rem;
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
   &__item {
+    @include align-center();
     height: 180px;
     width: 180px;
+    position: relative;
+    border: 1px solid var(--text_dark);
     color: var(--text_dark);
     &--light {
       color: var(--white);
     }
   }
+  &__copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__hex {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.25rem;
+  }
+  &__percent {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
 }
 
 .generator {
   width: 60%;
-
+  position: relative;
   max-width: var(--max-width);
+  overflow: hidden;
+  &__error {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    @include align-center();
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--soft_red);
+    background: var(--soft_yellow);
+    font-weight: 700;
+    transition: transform 0.35s linear;
+    svg {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
   &__form {
     display: flex;
     button {

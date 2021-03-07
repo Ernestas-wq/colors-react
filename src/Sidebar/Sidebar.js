@@ -1,13 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { GoSettings, GoHome } from 'react-icons/go';
-import { HiSave } from 'react-icons/hi';
 import { links } from './links';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useSidebarContext } from './context';
 
 const Sidebar = () => {
-  console.log(links);
   const sidebarRef = useRef(null);
   const listRef = useRef(null);
   const { isSidebarOpen, closeSidebar, openSidebar } = useSidebarContext();

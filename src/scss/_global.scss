@@ -7,6 +7,7 @@
   --soft_blue: #118ab2;
   --soft_pink: #ef476f;
   --soft_red: #d90429;
+  --soft_yellow: #ffd7ba;
   --white: #ffffff;
   --text_dark: #293241;
   --max-width: 1170px;
@@ -19,7 +20,9 @@ body {
 .main {
   display: flex;
 }
-
+button {
+  cursor: pointer;
+}
 a {
   text-decoration: none;
 }
