@@ -3,12 +3,24 @@ import { FaSearch } from 'react-icons/fa';
 import { useColorGeneratorContext } from './context';
 import { BiError } from 'react-icons/bi';
 const SearchForm = () => {
-  const { setColor, setList, color, isError } = useColorGeneratorContext();
+  const {
+    setColor,
+    setColorList,
+    colorList,
+    color,
+    isError,
+  } = useColorGeneratorContext();
   const errorRef = useRef(null);
+  const inputRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
-    setList(color);
+    setColorList(color);
   };
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [colorList]);
+
   useEffect(() => {
     isError
       ? (errorRef.current.style.transform = 'translateY(0)')
@@ -26,6 +38,7 @@ const SearchForm = () => {
             isError ? 'generator__input generator__input--error' : 'generator__input'
           }`}
           placeholder="#118ab2"
+          ref={inputRef}
           onChange={e => setColor(e.target.value)}
         />
         <button

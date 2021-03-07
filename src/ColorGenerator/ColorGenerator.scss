@@ -1,8 +1,20 @@
+/*
+Main styles
+*/
 .color-list {
-  flex: 0.965 1;
-  min-height: 95vh;
-  padding: var(--padding_global);
+  @include main-right();
+  &__save {
+    @include save-button(var(--clr_main-1));
+  }
+  &__save:hover {
+    background: var(--clr_main-1);
+    color: var(--white);
+  }
 }
+
+/*
+Color list
+*/
 .colors {
   margin-top: 2rem;
   display: grid;
@@ -83,7 +95,9 @@
     font-weight: 700;
   }
 }
-
+/*
+Color generator form
+*/
 .generator {
   width: 60%;
   position: relative;
@@ -143,5 +157,96 @@
   &__input--error:focus + button {
     border-bottom: 3px solid var(--soft_red);
     color: var(--soft_red);
+  }
+}
+/*
+Modal
+*/
+.modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s ease;
+  &--active {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+.save-color {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: var(--clr_main-3);
+  height: 200px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  padding: 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include align-center();
+    flex-direction: column;
+  }
+  &__title {
+    color: var(--white);
+    font-size: 2rem;
+    span {
+      color: var(--soft_pink);
+    }
+  }
+  &__form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__label {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--white);
+  }
+  &__input {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 15px;
+  }
+  &__input::placeholder {
+    padding: 0.15rem;
+  }
+
+  &__submit {
+    @include save-button(var(--white));
+  }
+  &__submit:hover {
+    color: var(--clr_main-1);
+    background: var(--white);
+  }
+  &__close {
+    background: transparent;
+    font-size: 2.115rem;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: color 0.3s ease-out;
+    color: var(--soft_yellow);
+  }
+  &__close:hover {
+    color: var(--clr_main-2);
   }
 }

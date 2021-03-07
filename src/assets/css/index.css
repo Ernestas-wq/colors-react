@@ -309,6 +309,9 @@ a {
   }
 }
 
+/*
+Main styles
+*/
 .color-list {
   -webkit-box-flex: 0.965;
       -ms-flex: 0.965 1;
@@ -317,6 +320,38 @@ a {
   padding: var(--padding_global);
 }
 
+.color-list__save {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--clr_main-1);
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid var(--clr_main-1);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.color-list__save svg {
+  margin-left: 10px;
+}
+
+.color-list__save:hover {
+  background: var(--clr_main-1);
+  color: var(--white);
+}
+
+/*
+Color list
+*/
 .colors {
   margin-top: 2rem;
   display: -ms-grid;
@@ -445,6 +480,9 @@ a {
   font-weight: 700;
 }
 
+/*
+Color generator form
+*/
 .generator {
   width: 60%;
   position: relative;
@@ -541,6 +579,169 @@ a {
 .generator__input--error:focus + button {
   border-bottom: 3px solid var(--soft_red);
   color: var(--soft_red);
+}
+
+/*
+Modal
+*/
+.modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.modal-overlay--active {
+  z-index: 1;
+  opacity: 1;
+}
+
+.save-color {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: var(--clr_main-3);
+  height: 200px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  padding: 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.save-color__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.save-color__title {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.save-color__title span {
+  color: var(--soft_pink);
+}
+
+.save-color__form {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.save-color__label {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--white);
+}
+
+.save-color__input {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  outline: none;
+  border-radius: 15px;
+}
+
+.save-color__input::-webkit-input-placeholder {
+  padding: 0.15rem;
+}
+
+.save-color__input:-ms-input-placeholder {
+  padding: 0.15rem;
+}
+
+.save-color__input::-ms-input-placeholder {
+  padding: 0.15rem;
+}
+
+.save-color__input::placeholder {
+  padding: 0.15rem;
+}
+
+.save-color__submit {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid var(--white);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.save-color__submit svg {
+  margin-left: 10px;
+}
+
+.save-color__submit:hover {
+  color: var(--clr_main-1);
+  background: var(--white);
+}
+
+.save-color__close {
+  background: transparent;
+  font-size: 2.115rem;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  color: var(--soft_yellow);
+}
+
+.save-color__close:hover {
+  color: var(--clr_main-2);
 }
 
 .sidebar {
@@ -656,5 +857,13 @@ a {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
+}
+
+.saved-colors {
+  -webkit-box-flex: 0.965;
+      -ms-flex: 0.965 1;
+          flex: 0.965 1;
+  min-height: 95vh;
+  padding: var(--padding_global);
 }
 /*# sourceMappingURL=index.css.map */

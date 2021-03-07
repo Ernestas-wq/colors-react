@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../../SavedColors/SavedColors.scss"
+    ],
+    "names": [],
+    "file": "SavedColors.min.css"
+}

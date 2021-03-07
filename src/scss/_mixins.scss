@@ -3,3 +3,22 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin save-button($color) {
+  margin-top: 10px;
+  @include align-center();
+  color: $color;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid $color;
+  transition: all 0.3s ease-in;
+  svg {
+    margin-left: 10px;
+  }
+}
+@mixin main-right {
+  flex: 0.965 1;
+  min-height: 95vh;
+  padding: var(--padding_global);
+}
