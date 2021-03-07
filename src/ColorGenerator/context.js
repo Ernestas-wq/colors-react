@@ -1,14 +1,15 @@
 import React, { useReducer, useContext } from 'react';
 import {
   SET_LOADING,
-  SET_ERROR,
+  SET_GENERATE_ERROR,
   SET_COLOR_LIST,
   SET_COLOR,
   SAVE_COLOR,
   OPEN_SAVE_COLOR_MODAL,
   CLOSE_SAVE_COLOR_MODAL,
+  SET_SAVE_COLOR_NAME,
 } from './actions';
-import { getSavedColorList } from './utils';
+import { getSavedColorList, validateHex } from './utils';
 import Values from 'values.js';
 
 import reducer from './reducer';
@@ -16,10 +17,20 @@ import reducer from './reducer';
 const ColorGeneratorContext = React.createContext();
 
 const initialState = {
-  color: '#118ab2',
-  isError: false,
-  isLoading: false,
-  isSaveColorModalOpen: false,
+  generator: {
+    color: '#118ab2',
+    isLoading: false,
+    isError: false,
+  },
+  saveColorModal: {
+    isOpen: false,
+    colorName: '',
+    error: {
+      show: false,
+      message: '',
+    },
+  },
+
   colorList: new Values('#118ab2').all(10),
   savedColorList: getSavedColorList(),
 };
@@ -27,6 +38,9 @@ const initialState = {
 const ColorGeneratorProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  /*
+  Generator methods
+  */
   const setColor = color => dispatch({ type: SET_COLOR, payload: color });
 
   const setColorList = color => {
@@ -39,19 +53,34 @@ const ColorGeneratorProvider = ({ children }) => {
         dispatch({ type: SET_LOADING, payload: false });
       }, 1000);
     } catch (err) {
-      dispatch({ type: SET_ERROR, payload: true });
-
-      setTimeout(() => {
-        dispatch({ type: SET_ERROR, payload: false });
-      }, 3000);
+      handleWrongHexError();
     }
   };
 
-  const saveColor = color => dispatch({ type: SAVE_COLOR, payload: color });
+  const handleWrongHexError = () => {
+    dispatch({ type: SET_GENERATE_ERROR, payload: true });
+    setTimeout(() => {
+      dispatch({ type: SET_GENERATE_ERROR, payload: false });
+    }, 3000);
+  };
 
-  const openSaveColorModal = () => dispatch({ type: OPEN_SAVE_COLOR_MODAL });
+  /*
+  Save Modal methods
+  */
+
+  const saveColor = (name, color) =>
+    dispatch({ type: SAVE_COLOR, payload: { name, color } });
+
+  const openSaveColorModal = () => {
+    validateHex(state.generator.color)
+      ? dispatch({ type: OPEN_SAVE_COLOR_MODAL })
+      : handleWrongHexError();
+  };
 
   const closeSaveColorModal = () => dispatch({ type: CLOSE_SAVE_COLOR_MODAL });
+
+  const setSaveColorName = name =>
+    dispatch({ type: SET_SAVE_COLOR_NAME, payload: name });
 
   return (
     <ColorGeneratorContext.Provider
@@ -62,6 +91,7 @@ const ColorGeneratorProvider = ({ children }) => {
         saveColor,
         openSaveColorModal,
         closeSaveColorModal,
+        setSaveColorName,
       }}
     >
       {children}

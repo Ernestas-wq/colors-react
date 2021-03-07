@@ -8,13 +8,7 @@ import SaveColorModal from './SaveColorModal';
 
 const ColorList = () => {
   const colorGeneratorContainerRef = useRef(null);
-  const {
-    isLoading,
-    colorList,
-    saveColor,
-    color,
-    openSaveColorModal,
-  } = useColorGeneratorContext();
+  const { generator, colorList, openSaveColorModal } = useColorGeneratorContext();
 
   return (
     <section className="color-list" ref={colorGeneratorContainerRef}>
@@ -24,7 +18,7 @@ const ColorList = () => {
         <HiSaveAs />
       </button>
 
-      {isLoading ? (
+      {generator.isLoading ? (
         <Loading />
       ) : (
         <div className="colors">

@@ -7,14 +7,13 @@ const SearchForm = () => {
     setColor,
     setColorList,
     colorList,
-    color,
-    isError,
+    generator,
   } = useColorGeneratorContext();
   const errorRef = useRef(null);
   const inputRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
-    setColorList(color);
+    setColorList(generator.color);
   };
 
   useEffect(() => {
@@ -22,10 +21,10 @@ const SearchForm = () => {
   }, [colorList]);
 
   useEffect(() => {
-    isError
+    generator.isError
       ? (errorRef.current.style.transform = 'translateY(0)')
       : (errorRef.current.style.transform = 'translateY(-100%)');
-  }, [isError]);
+  }, [generator.isError]);
 
   return (
     <section className="generator">
@@ -35,7 +34,9 @@ const SearchForm = () => {
           type="text"
           name="searchHex"
           className={`${
-            isError ? 'generator__input generator__input--error' : 'generator__input'
+            generator.isError
+              ? 'generator__input generator__input--error'
+              : 'generator__input'
           }`}
           placeholder="#118ab2"
           ref={inputRef}
@@ -44,7 +45,7 @@ const SearchForm = () => {
         <button
           type="submit"
           className={`${
-            isError
+            generator.isError
               ? 'generator__submit generator__submit--error'
               : 'generator__submit'
           }`}

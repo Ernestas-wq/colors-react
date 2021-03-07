@@ -5,23 +5,26 @@ import { useColorGeneratorContext } from './context';
 
 const SaveColorModal = () => {
   const {
-    isSaveColorModalOpen,
+    generator,
+    saveColor,
+    saveColorModal,
     closeSaveColorModal,
-    color,
+    setSaveColorName,
   } = useColorGeneratorContext();
   const inputRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
+    saveColor(saveColorModal.colorName, generator.color);
   };
 
   useEffect(() => {
-    if (isSaveColorModalOpen) inputRef.current.focus();
-  }, [isSaveColorModalOpen]);
+    if (saveColorModal.isOpen) inputRef.current.focus();
+  }, [saveColorModal.isOpen]);
 
   return (
     <div
       className={`${
-        isSaveColorModalOpen
+        saveColorModal.isOpen
           ? 'modal-overlay modal-overlay--active'
           : 'modal-overlay'
       }`}
@@ -29,7 +32,7 @@ const SaveColorModal = () => {
       <div className="save-color">
         <div className="save-color__container">
           <h3 className="save-color__title">
-            Save <span>{color}</span> pallet as:
+            Save <span>{generator.color}</span> pallet as:
           </h3>
           <button className="save-color__close" onClick={closeSaveColorModal}>
             <FaWindowClose />
@@ -43,6 +46,7 @@ const SaveColorModal = () => {
               name="color-name"
               className="save-color__input"
               placeholder="Color name"
+              onChange={e => setSaveColorName(e.target.value)}
               ref={inputRef}
             />
             <button type="submit" className="save-color__submit">
