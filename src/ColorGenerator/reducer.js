@@ -1,10 +1,4 @@
-import {
-  SET_LOADING,
-  SET_COLOR,
-  SET_ERROR,
-  SET_LIST,
-  COPY_TO_CLIPBOARD,
-} from './actions';
+import { SET_LOADING, SET_COLOR, SET_ERROR, SET_LIST } from './actions';
 
 const reducer = (state, action) => {
   switch (action.type) {

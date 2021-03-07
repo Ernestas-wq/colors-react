@@ -1,11 +1,5 @@
 import React, { useReducer, useContext } from 'react';
-import {
-  SET_LOADING,
-  SET_ERROR,
-  SET_LIST,
-  COPY_TO_CLIPBOARD,
-  SET_COLOR,
-} from './actions';
+import { SET_LOADING, SET_ERROR, SET_LIST, SET_COLOR } from './actions';
 import Values from 'values.js';
 
 import reducer from './reducer';

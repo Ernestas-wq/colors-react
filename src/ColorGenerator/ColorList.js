@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useColorGeneratorContext } from './context';
 import SearchForm from './SearchForm';
 import SingleColor from './SingleColor';
