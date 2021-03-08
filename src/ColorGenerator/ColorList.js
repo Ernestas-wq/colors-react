@@ -1,24 +1,27 @@
 import React, { useRef } from 'react';
 import { useColorGeneratorContext } from './context';
 import { HiSaveAs } from 'react-icons/hi';
-import SearchForm from './SearchForm';
+import GeneratorForm from './GeneratorForm';
 import SingleColor from './SingleColor';
 import Loading from '../staticComponents/Loading';
 import SaveColorModal from './SaveColorModal';
-
+import { validateUniqueColor } from './utils';
 const ColorList = () => {
   const colorGeneratorContainerRef = useRef(null);
-  const { generator, colorList, openSaveColorModal } = useColorGeneratorContext();
-
+  const {
+    generatorForm,
+    colorList,
+    openSaveColorModal,
+  } = useColorGeneratorContext();
   return (
     <section className="color-list" ref={colorGeneratorContainerRef}>
-      <SearchForm />
+      <GeneratorForm />
       <button className="color-list__save" onClick={openSaveColorModal}>
         Save Color
         <HiSaveAs />
       </button>
 
-      {generator.isLoading ? (
+      {generatorForm.isLoading ? (
         <Loading />
       ) : (
         <div className="colors">

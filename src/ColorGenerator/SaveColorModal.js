@@ -1,38 +1,58 @@
 import React, { useEffect, useRef } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { HiSaveAs } from 'react-icons/hi';
+import { BiErrorAlt, BiMessageSquareCheck } from 'react-icons/bi';
+
 import { useColorGeneratorContext } from './context';
 
 const SaveColorModal = () => {
   const {
-    generator,
+    generatorForm,
     saveColor,
     saveColorModal,
     closeSaveColorModal,
     setSaveColorName,
+    resetSaveColorAlert,
   } = useColorGeneratorContext();
+
+  const { isOpen, colorName, alert } = saveColorModal;
+
   const inputRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
-    saveColor(saveColorModal.colorName, generator.color);
+    saveColor(saveColorModal.colorName, generatorForm.color);
   };
 
   useEffect(() => {
-    if (saveColorModal.isOpen) inputRef.current.focus();
-  }, [saveColorModal.isOpen]);
+    if (isOpen) inputRef.current.focus();
+  }, [isOpen]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      resetSaveColorAlert();
+    }, 1500);
+    return () => clearTimeout(timeout);
+  }, [alert.show, resetSaveColorAlert]);
+
+  useEffect(() => {
+    if (alert.type === 'success') {
+      const timeout = setTimeout(() => {
+        closeSaveColorModal();
+      }, 2500);
+      return () => clearTimeout(timeout);
+    }
+  }, [alert.show, alert.type, closeSaveColorModal]);
 
   return (
     <div
       className={`${
-        saveColorModal.isOpen
-          ? 'modal-overlay modal-overlay--active'
-          : 'modal-overlay'
+        isOpen ? 'modal-overlay modal-overlay--active' : 'modal-overlay'
       }`}
     >
       <div className="save-color">
         <div className="save-color__container">
           <h3 className="save-color__title">
-            Save <span>{generator.color}</span> pallet as:
+            Save <span>{generatorForm.color}</span> pallet as:
           </h3>
           <button className="save-color__close" onClick={closeSaveColorModal}>
             <FaWindowClose />
@@ -53,6 +73,20 @@ const SaveColorModal = () => {
               Save <HiSaveAs />
             </button>
           </form>
+          <div
+            className={`${
+              alert.show
+                ? 'save-color__alert save-color__alert--active'
+                : 'save-color__alert'
+            }`}
+          >
+            <p
+              className={`save-color__alert__message save-color__alert__message--${alert.type}`}
+            >
+              {alert.message}
+              {alert.type === 'success' ? <BiMessageSquareCheck /> : <BiErrorAlt />}
+            </p>
+          </div>
         </div>
       </div>
     </div>

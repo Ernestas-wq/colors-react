@@ -2,18 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useColorGeneratorContext } from './context';
 import { BiError } from 'react-icons/bi';
-const SearchForm = () => {
+const GeneratorForm = () => {
   const {
     setColor,
     setColorList,
     colorList,
-    generator,
+    generatorForm,
   } = useColorGeneratorContext();
+  const { color, isError } = generatorForm;
+
   const errorRef = useRef(null);
   const inputRef = useRef(null);
   const handleSubmit = e => {
     e.preventDefault();
-    setColorList(generator.color);
+    setColorList(color);
   };
 
   useEffect(() => {
@@ -21,10 +23,10 @@ const SearchForm = () => {
   }, [colorList]);
 
   useEffect(() => {
-    generator.isError
+    isError
       ? (errorRef.current.style.transform = 'translateY(0)')
       : (errorRef.current.style.transform = 'translateY(-100%)');
-  }, [generator.isError]);
+  }, [isError]);
 
   return (
     <section className="generator">
@@ -34,9 +36,7 @@ const SearchForm = () => {
           type="text"
           name="searchHex"
           className={`${
-            generator.isError
-              ? 'generator__input generator__input--error'
-              : 'generator__input'
+            isError ? 'generator__input generator__input--error' : 'generator__input'
           }`}
           placeholder="#118ab2"
           ref={inputRef}
@@ -45,7 +45,7 @@ const SearchForm = () => {
         <button
           type="submit"
           className={`${
-            generator.isError
+            isError
               ? 'generator__submit generator__submit--error'
               : 'generator__submit'
           }`}
@@ -60,4 +60,4 @@ const SearchForm = () => {
   );
 };
 
-export default SearchForm;
+export default GeneratorForm;

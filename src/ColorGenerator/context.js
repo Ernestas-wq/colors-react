@@ -8,8 +8,9 @@ import {
   OPEN_SAVE_COLOR_MODAL,
   CLOSE_SAVE_COLOR_MODAL,
   SET_SAVE_COLOR_NAME,
+  SET_SAVE_COLOR_ALERT,
 } from './actions';
-import { getSavedColorList, validateHex } from './utils';
+import { getSavedColorList, validateHex, validateUniqueColor } from './utils';
 import Values from 'values.js';
 
 import reducer from './reducer';
@@ -17,7 +18,7 @@ import reducer from './reducer';
 const ColorGeneratorContext = React.createContext();
 
 const initialState = {
-  generator: {
+  generatorForm: {
     color: '#118ab2',
     isLoading: false,
     isError: false,
@@ -25,8 +26,9 @@ const initialState = {
   saveColorModal: {
     isOpen: false,
     colorName: '',
-    error: {
+    alert: {
       show: false,
+      type: '',
       message: '',
     },
   },
@@ -65,14 +67,44 @@ const ColorGeneratorProvider = ({ children }) => {
   };
 
   /*
-  Save Modal methods
+  Save color modal methods
   */
 
-  const saveColor = (name, color) =>
-    dispatch({ type: SAVE_COLOR, payload: { name, color } });
+  const saveColor = (name, color) => {
+    if (validateUniqueColor(state.savedColorList, color)) {
+      const alert = {
+        show: true,
+        type: 'danger',
+        message: 'Oops! Looks like you already saved this color',
+      };
+      dispatch({ type: SET_SAVE_COLOR_ALERT, payload: alert });
+    } else if (!state.saveColorModal.colorName) {
+      const alert = {
+        show: true,
+        type: 'danger',
+        message: 'Please enter a name',
+      };
+      dispatch({ type: SET_SAVE_COLOR_ALERT, payload: alert });
+    } else {
+      const alert = {
+        show: true,
+        type: 'success',
+        message: 'Saved successfully',
+      };
+      dispatch({ type: SAVE_COLOR, payload: { name, color } });
+      dispatch({ type: SET_SAVE_COLOR_ALERT, payload: alert });
+    }
+  };
+
+  const resetSaveColorAlert = () => {
+    dispatch({
+      type: SET_SAVE_COLOR_ALERT,
+      payload: { show: false, type: '', message: '' },
+    });
+  };
 
   const openSaveColorModal = () => {
-    validateHex(state.generator.color)
+    validateHex(state.generatorForm.color)
       ? dispatch({ type: OPEN_SAVE_COLOR_MODAL })
       : handleWrongHexError();
   };
@@ -92,6 +124,7 @@ const ColorGeneratorProvider = ({ children }) => {
         openSaveColorModal,
         closeSaveColorModal,
         setSaveColorName,
+        resetSaveColorAlert,
       }}
     >
       {children}

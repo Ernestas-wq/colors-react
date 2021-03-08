@@ -181,13 +181,13 @@ Modal
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
   background-color: var(--clr_main-3);
-  height: 200px;
+  height: 300px;
   border-radius: 15px;
   width: 90%;
   max-width: 500px;
@@ -198,7 +198,9 @@ Modal
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     @include align-center();
+    justify-content: space-between;
     flex-direction: column;
   }
   &__title {
@@ -220,9 +222,9 @@ Modal
   }
   &__input {
     margin-top: 1rem;
+    font-size: 1.35rem;
     padding: 0.5rem;
     outline: none;
-    border-radius: 15px;
   }
   &__input::placeholder {
     padding: 0.15rem;
@@ -248,5 +250,31 @@ Modal
   }
   &__close:hover {
     color: var(--clr_main-2);
+  }
+  &__alert {
+    padding: 10px;
+    border-radius: 15px;
+    transform: translateY(100%);
+    min-width: 80%;
+    transition: transform 0.35s ease-in;
+    background: var(--soft_yellow);
+
+    &__message {
+      @include align-center();
+      font-weight: 700;
+      font-size: 1rem;
+      &--success {
+        color: var(--soft_green);
+      }
+      &--danger {
+        color: var(--soft_red);
+      }
+      svg {
+        margin-left: 10px;
+      }
+    }
+    &--active {
+      transform: translateY(0);
+    }
   }
 }

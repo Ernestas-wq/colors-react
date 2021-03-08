@@ -613,15 +613,15 @@ Modal
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
   background-color: var(--clr_main-3);
-  height: 200px;
+  height: 300px;
   border-radius: 15px;
   width: 90%;
   max-width: 500px;
@@ -634,6 +634,7 @@ Modal
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -643,6 +644,9 @@ Modal
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -677,9 +681,9 @@ Modal
 
 .save-color__input {
   margin-top: 1rem;
+  font-size: 1.35rem;
   padding: 0.5rem;
   outline: none;
-  border-radius: 15px;
 }
 
 .save-color__input::-webkit-input-placeholder {
@@ -742,6 +746,50 @@ Modal
 
 .save-color__close:hover {
   color: var(--clr_main-2);
+}
+
+.save-color__alert {
+  padding: 10px;
+  border-radius: 15px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  min-width: 80%;
+  -webkit-transition: -webkit-transform 0.35s ease-in;
+  transition: -webkit-transform 0.35s ease-in;
+  transition: transform 0.35s ease-in;
+  transition: transform 0.35s ease-in, -webkit-transform 0.35s ease-in;
+  background: var(--soft_yellow);
+}
+
+.save-color__alert__message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.save-color__alert__message--success {
+  color: var(--soft_green);
+}
+
+.save-color__alert__message--danger {
+  color: var(--soft_red);
+}
+
+.save-color__alert__message svg {
+  margin-left: 10px;
+}
+
+.save-color__alert--active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .sidebar {

@@ -7,26 +7,27 @@ import {
   OPEN_SAVE_COLOR_MODAL,
   CLOSE_SAVE_COLOR_MODAL,
   SET_SAVE_COLOR_NAME,
+  SET_SAVE_COLOR_ALERT,
 } from './actions';
 import { getSavedColorList } from './utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
     case SET_COLOR: {
-      const newGeneratorState = { ...state.generator, color: action.payload };
-      console.log(newGeneratorState);
-      return { ...state, generator: newGeneratorState };
+      const newGeneratorForm = { ...state.generator, color: action.payload };
+      console.log(newGeneratorForm);
+      return { ...state, generatorForm: newGeneratorForm };
     }
     case SET_COLOR_LIST: {
       return { ...state, colorList: action.payload };
     }
     case SET_LOADING: {
-      const newGeneratorState = { ...state.generator, isLoading: action.payload };
-      return { ...state, generator: newGeneratorState };
+      const newGeneratorForm = { ...state.generator, isLoading: action.payload };
+      return { ...state, generatorForm: newGeneratorForm };
     }
     case SET_GENERATE_ERROR: {
-      const newGeneratorState = { ...state.generator, isError: action.payload };
-      return { ...state, generator: newGeneratorState };
+      const newGeneratorForm = { ...state.generator, isError: action.payload };
+      return { ...state, generatorForm: newGeneratorForm };
     }
 
     case SET_SAVE_COLOR_NAME: {
@@ -39,9 +40,9 @@ const reducer = (state, action) => {
 
     case SAVE_COLOR: {
       const savedColorList = getSavedColorList();
-      const newSavedColorList = [...savedColorList, action.payload];
-      localStorage.setItem('savedColorList', JSON.stringify(newSavedColorList));
-      return { ...state, savedColorList: newSavedColorList };
+      savedColorList[action.payload.color] = action.payload.name;
+      localStorage.setItem('savedColorList', JSON.stringify(savedColorList));
+      return { ...state, savedColorList };
     }
     case OPEN_SAVE_COLOR_MODAL: {
       const newSaveColorModal = { ...state.saveColorModal, isOpen: true };
@@ -51,7 +52,10 @@ const reducer = (state, action) => {
       const newSaveColorModal = { ...state.saveColorModal, isOpen: false };
       return { ...state, saveColorModal: newSaveColorModal };
     }
-
+    case SET_SAVE_COLOR_ALERT: {
+      const newSaveColorModal = { ...state.saveColorModal, alert: action.payload };
+      return { ...state, saveColorModal: newSaveColorModal };
+    }
     default:
       throw new Error(`No matching ${action.type} action type`);
   }
