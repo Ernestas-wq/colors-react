@@ -10,7 +10,7 @@ import {
   SET_SAVE_COLOR_NAME,
   SET_SAVE_COLOR_ALERT,
 } from './actions';
-import { getSavedColorList, validateHex, validateUniqueColor } from './utils';
+import { getSavedColorList, validateHex } from './utils';
 import Values from 'values.js';
 
 import reducer from './reducer';
@@ -71,14 +71,7 @@ const ColorGeneratorProvider = ({ children }) => {
   */
 
   const saveColor = (name, color) => {
-    if (validateUniqueColor(state.savedColorList, color)) {
-      const alert = {
-        show: true,
-        type: 'danger',
-        message: 'Oops! Looks like you already saved this color',
-      };
-      dispatch({ type: SET_SAVE_COLOR_ALERT, payload: alert });
-    } else if (!state.saveColorModal.colorName) {
+    if (!state.saveColorModal.colorName) {
       const alert = {
         show: true,
         type: 'danger',

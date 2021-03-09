@@ -146,6 +146,8 @@ img {
   --soft_pink: #ef476f;
   --soft_red: #d90429;
   --soft_yellow: #ffd7ba;
+  --soft_grey: #8e9aaf;
+  --soft_white: #edf6f9;
   --white: #ffffff;
   --text_dark: #293241;
   --max-width: 1170px;
@@ -913,5 +915,86 @@ Modal
           flex: 0.965 1;
   min-height: 95vh;
   padding: var(--padding_global);
+}
+
+.saved-colors__container {
+  margin-top: 2rem;
+  display: -ms-grid;
+  display: grid;
+  gap: 0.5rem;
+  -ms-grid-columns: (minmax(180px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.saved-colors__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  padding: 0.2rem;
+  background: var(--soft_grey);
+  border-top-left-radius: 20px;
+}
+
+.saved-colors__title {
+  font-size: 1.5rem;
+  font-family: 'Akaya Telivigala', cursive;
+  color: var(--white);
+}
+
+.saved-colors__hex {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  padding: 5px;
+  background: var(--soft_yellow);
+  border-radius: 10px;
+}
+
+.saved-colors__buttons {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  top: 10px;
+  right: 5px;
+}
+
+.saved-colors__buttons a {
+  font-size: 1.5rem;
+  color: var(--soft_white);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.saved-colors__buttons button {
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: var(--soft_white);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.saved-colors__buttons a:hover,
+.saved-colors__buttons button:hover {
+  color: var(--soft_pink);
 }
 /*# sourceMappingURL=index.css.map */

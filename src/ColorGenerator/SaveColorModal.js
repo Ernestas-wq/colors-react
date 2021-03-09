@@ -8,19 +8,20 @@ import { useColorGeneratorContext } from './context';
 const SaveColorModal = () => {
   const {
     generatorForm,
-    saveColor,
     saveColorModal,
+    saveColor,
     closeSaveColorModal,
     setSaveColorName,
     resetSaveColorAlert,
   } = useColorGeneratorContext();
 
   const { isOpen, colorName, alert } = saveColorModal;
-
   const inputRef = useRef(null);
+
   const handleSubmit = e => {
     e.preventDefault();
-    saveColor(saveColorModal.colorName, generatorForm.color);
+    saveColor(colorName, generatorForm.color);
+    setSaveColorName('');
   };
 
   useEffect(() => {
@@ -33,15 +34,6 @@ const SaveColorModal = () => {
     }, 1500);
     return () => clearTimeout(timeout);
   }, [alert.show, resetSaveColorAlert]);
-
-  useEffect(() => {
-    if (alert.type === 'success') {
-      const timeout = setTimeout(() => {
-        closeSaveColorModal();
-      }, 2500);
-      return () => clearTimeout(timeout);
-    }
-  }, [alert.show, alert.type, closeSaveColorModal]);
 
   return (
     <div
@@ -66,6 +58,7 @@ const SaveColorModal = () => {
               name="color-name"
               className="save-color__input"
               placeholder="Color name"
+              value={colorName}
               onChange={e => setSaveColorName(e.target.value)}
               ref={inputRef}
             />
