@@ -1,7 +1,8 @@
 import ColorGenerator from './ColorGenerator';
 import Sidebar from './Sidebar';
-import SavedColors from './SavedColors';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SavedColors from './SavedColors';
+import SingleSavedColor from './SavedColors/SingleSavedColor';
 import Home from './staticComponents/Home';
 import Heading from './staticComponents/Heading';
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/color-generator">
               <ColorGenerator />
             </Route>
+            <Route path="/saved-colors/:id" children={<SingleSavedColor />}></Route>
             <Route path="/saved-colors">
               <SavedColors />
             </Route>

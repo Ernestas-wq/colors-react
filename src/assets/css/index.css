@@ -595,8 +595,8 @@ Modal
   background-color: rgba(0, 0, 0, 0.4);
   z-index: -1;
   opacity: 0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
 }
 
 .modal-overlay--active {
@@ -909,6 +909,9 @@ Modal
   }
 }
 
+/*
+SAVED COLOR LIST
+*/
 .saved-colors {
   -webkit-box-flex: 0.965;
       -ms-flex: 0.965 1;
@@ -996,5 +999,188 @@ Modal
 .saved-colors__buttons a:hover,
 .saved-colors__buttons button:hover {
   color: var(--soft_pink);
+}
+
+/*
+SINGLE SAVED COLOR
+*/
+.single-saved-color {
+  -webkit-box-flex: 0.965;
+      -ms-flex: 0.965 1;
+          flex: 0.965 1;
+  min-height: 95vh;
+  padding: var(--padding_global);
+}
+
+.single-saved-color__list {
+  margin-top: 2rem;
+  display: -ms-grid;
+  display: grid;
+  gap: 0.5rem;
+  -ms-grid-columns: (minmax(180px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.single-saved-color__error {
+  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.single-saved-color__error h2 {
+  margin-bottom: 3rem;
+}
+
+.single-saved-color__back {
+  text-transform: uppercase;
+  font-size: 28px;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--clr_main-3);
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid var(--clr_main-3);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.single-saved-color__back svg {
+  margin-left: 10px;
+}
+
+.single-saved-color__back:hover {
+  color: var(--white);
+  background: var(--clr_main-3);
+}
+
+/*
+DELETE MODAL
+*/
+.delete-modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: var(--clr_main-3);
+  height: 300px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  padding: 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.delete-modal__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.delete-modal__close {
+  background: transparent;
+  font-size: 2.115rem;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  color: var(--soft_yellow);
+}
+
+.delete-modal__title {
+  color: var(--white);
+  text-align: center;
+  line-height: 2.25rem;
+  font-size: 2rem;
+}
+
+.delete-modal__title span {
+  color: var(--soft_pink);
+}
+
+.delete-modal__buttons {
+  margin: 3rem auto 0 auto;
+  width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.delete-modal__yes, .delete-modal__no {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid var(--white);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.delete-modal__yes svg, .delete-modal__no svg {
+  margin-left: 10px;
+}
+
+.delete-modal__yes:hover {
+  background: var(--soft_green);
+}
+
+.delete-modal__no:hover {
+  background: var(--soft_red);
+}
+
+.delete-modal__close:hover {
+  color: var(--clr_main-2);
 }
 /*# sourceMappingURL=index.css.map */

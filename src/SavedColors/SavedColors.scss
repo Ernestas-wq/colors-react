@@ -1,3 +1,6 @@
+/*
+SAVED COLOR LIST
+*/
 .saved-colors {
   @include main-right();
 
@@ -57,5 +60,80 @@
     button:hover {
       color: var(--soft_pink);
     }
+  }
+}
+/*
+SINGLE SAVED COLOR
+*/
+.single-saved-color {
+  @include main-right();
+  &__list {
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  &__error {
+    font-size: 40px;
+    @include align-center();
+    flex-direction: column;
+    text-align: center;
+    h2 {
+      margin-bottom: 3rem;
+    }
+  }
+  &__back {
+    text-transform: uppercase;
+    font-size: 28px;
+    @include save-button(var(--clr_main-3));
+  }
+  &__back:hover {
+    color: var(--white);
+    background: var(--clr_main-3);
+  }
+}
+
+/*
+DELETE MODAL
+*/
+.delete-modal {
+  @include modal();
+  &__container {
+    @include align-center();
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+  }
+  &__close {
+    @include close-modal-btn();
+  }
+  &__title {
+    color: var(--white);
+    text-align: center;
+    line-height: 2.25rem;
+    font-size: 2rem;
+    span {
+      color: var(--soft_pink);
+    }
+  }
+  &__buttons {
+    margin: 3rem auto 0 auto;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__yes,
+  &__no {
+    @include save-button(var(--white));
+  }
+  &__yes:hover {
+    background: var(--soft_green);
+  }
+  &__no:hover {
+    background: var(--soft_red);
+  }
+  &__close:hover {
+    color: var(--clr_main-2);
   }
 }

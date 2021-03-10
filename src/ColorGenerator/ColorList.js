@@ -5,7 +5,6 @@ import GeneratorForm from './GeneratorForm';
 import SingleColor from './SingleColor';
 import Loading from '../staticComponents/Loading';
 import SaveColorModal from './SaveColorModal';
-import { validateUniqueColor } from './utils';
 const ColorList = () => {
   const colorGeneratorContainerRef = useRef(null);
   const {
