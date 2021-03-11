@@ -685,23 +685,14 @@ Modal
   margin-top: 1rem;
   font-size: 1.35rem;
   padding: 0.5rem;
+  border: 3px solid transparent;
   outline: none;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
-.save-color__input::-webkit-input-placeholder {
-  padding: 0.15rem;
-}
-
-.save-color__input:-ms-input-placeholder {
-  padding: 0.15rem;
-}
-
-.save-color__input::-ms-input-placeholder {
-  padding: 0.15rem;
-}
-
-.save-color__input::placeholder {
-  padding: 0.15rem;
+.save-color__input:focus {
+  border: 3px solid var(--soft_green);
 }
 
 .save-color__submit {
@@ -1182,5 +1173,194 @@ DELETE MODAL
 
 .delete-modal__close:hover {
   color: var(--clr_main-2);
+}
+
+/*
+EDIT MODAL
+*/
+.edit-modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: var(--clr_main-3);
+  height: 300px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  padding: 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.edit-modal__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.edit-modal__close {
+  background: transparent;
+  font-size: 2.115rem;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  color: var(--soft_yellow);
+}
+
+.edit-modal__close:hover {
+  color: var(--clr_main-2);
+}
+
+.edit-modal__title {
+  color: var(--white);
+  text-align: center;
+  line-height: 2.25rem;
+  font-size: 2rem;
+}
+
+.edit-modal__title span {
+  color: var(--soft_pink);
+}
+
+.edit-modal__form {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.edit-modal__label {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--white);
+}
+
+.edit-modal__input {
+  margin-top: 1rem;
+  font-size: 1.35rem;
+  padding: 0.5rem;
+  border: 3px solid transparent;
+  outline: none;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+.edit-modal__input:focus {
+  border: 3px solid var(--soft_green);
+}
+
+.edit-modal__input::-webkit-input-placeholder {
+  padding: 0.15rem;
+}
+
+.edit-modal__input:-ms-input-placeholder {
+  padding: 0.15rem;
+}
+
+.edit-modal__input::-ms-input-placeholder {
+  padding: 0.15rem;
+}
+
+.edit-modal__input::placeholder {
+  padding: 0.15rem;
+}
+
+.edit-modal__submit {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 2px solid var(--white);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  margin-top: 1rem;
+}
+
+.edit-modal__submit svg {
+  margin-left: 10px;
+}
+
+.edit-modal__submit:hover {
+  color: var(--clr_main-1);
+  background: var(--white);
+}
+
+.edit-modal__alert {
+  padding: 10px;
+  border-radius: 15px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  min-width: 80%;
+  -webkit-transition: -webkit-transform 0.35s ease-in;
+  transition: -webkit-transform 0.35s ease-in;
+  transition: transform 0.35s ease-in;
+  transition: transform 0.35s ease-in, -webkit-transform 0.35s ease-in;
+  background: var(--soft_yellow);
+}
+
+.edit-modal__alert__message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.edit-modal__alert__message--success {
+  color: var(--soft_green);
+}
+
+.edit-modal__alert__message--danger {
+  color: var(--soft_red);
+}
+
+.edit-modal__alert__message svg {
+  margin-left: 10px;
+}
+
+.edit-modal__alert--active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 /*# sourceMappingURL=index.css.map */

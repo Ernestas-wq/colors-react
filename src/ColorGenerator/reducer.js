@@ -15,7 +15,6 @@ const reducer = (state, action) => {
   switch (action.type) {
     case SET_COLOR: {
       const newGeneratorForm = { ...state.generator, color: action.payload };
-      console.log(newGeneratorForm);
       return { ...state, generatorForm: newGeneratorForm };
     }
     case SET_COLOR_LIST: {
@@ -52,6 +51,7 @@ const reducer = (state, action) => {
       const newSaveColorModal = { ...state.saveColorModal, isOpen: false };
       return { ...state, saveColorModal: newSaveColorModal };
     }
+
     case SET_SAVE_COLOR_ALERT: {
       const newSaveColorModal = { ...state.saveColorModal, alert: action.payload };
       return { ...state, saveColorModal: newSaveColorModal };

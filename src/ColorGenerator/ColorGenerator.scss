@@ -213,10 +213,12 @@ Modal
     margin-top: 1rem;
     font-size: 1.35rem;
     padding: 0.5rem;
+    border: 3px solid transparent;
     outline: none;
+    transition: all 0.5s ease-in;
   }
-  &__input::placeholder {
-    padding: 0.15rem;
+  &__input:focus {
+    border: 3px solid var(--soft_green);
   }
 
   &__submit {

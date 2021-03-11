@@ -4,8 +4,9 @@ import { HiViewGrid, HiTrash } from 'react-icons/hi';
 import { AiFillEdit } from 'react-icons/ai';
 import { useSavedColorsContext } from './context';
 import DeleteModal from './DeleteModal';
+import EditModal from './EditModal';
 const SavedColorList = () => {
-  const { savedColorList, openDeleteModal } = useSavedColorsContext();
+  const { savedColorList, openDeleteModal, openEditModal } = useSavedColorsContext();
   return (
     <section className="saved-colors">
       <div className="saved-colors__container">
@@ -21,7 +22,7 @@ const SavedColorList = () => {
                 <button onClick={() => openDeleteModal(key, savedColorList[key])}>
                   <HiTrash />
                 </button>
-                <button>
+                <button onClick={() => openEditModal(key, savedColorList[key])}>
                   <AiFillEdit />
                 </button>
               </div>
@@ -30,6 +31,7 @@ const SavedColorList = () => {
         })}
       </div>
       <DeleteModal />
+      <EditModal />
     </section>
   );
 };

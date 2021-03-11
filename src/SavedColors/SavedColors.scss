@@ -137,3 +137,91 @@ DELETE MODAL
     color: var(--clr_main-2);
   }
 }
+/*
+EDIT MODAL
+*/
+.edit-modal {
+  @include modal();
+  &__container {
+    @include align-center();
+    justify-content: space-between;
+    overflow: hidden;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+  &__close {
+    @include close-modal-btn();
+  }
+  &__close:hover {
+    color: var(--clr_main-2);
+  }
+  &__title {
+    color: var(--white);
+    text-align: center;
+    line-height: 2.25rem;
+    font-size: 2rem;
+    span {
+      color: var(--soft_pink);
+    }
+  }
+  &__form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__label {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--white);
+  }
+  &__input {
+    margin-top: 1rem;
+    font-size: 1.35rem;
+    padding: 0.5rem;
+    border: 3px solid transparent;
+    outline: none;
+    transition: all 0.5s ease-in;
+  }
+  &__input:focus {
+    border: 3px solid var(--soft_green);
+  }
+  &__input::placeholder {
+    padding: 0.15rem;
+  }
+
+  &__submit {
+    @include save-button(var(--white));
+    margin-top: 1rem;
+  }
+  &__submit:hover {
+    color: var(--clr_main-1);
+    background: var(--white);
+  }
+  &__alert {
+    padding: 10px;
+    border-radius: 15px;
+    transform: translateY(100%);
+    min-width: 80%;
+    transition: transform 0.35s ease-in;
+    background: var(--soft_yellow);
+
+    &__message {
+      @include align-center();
+      font-weight: 700;
+      font-size: 1rem;
+      &--success {
+        color: var(--soft_green);
+      }
+      &--danger {
+        color: var(--soft_red);
+      }
+      svg {
+        margin-left: 10px;
+      }
+    }
+    &--active {
+      transform: translateY(0);
+    }
+  }
+}
