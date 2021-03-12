@@ -38,8 +38,9 @@ const Sidebar = () => {
           const { id, url, text, icon } = link;
           return (
             <li key={id} className="sidebar__item">
-              {icon}
               <Link className="sidebar__link" to={url}>
+                {icon}
+
                 {text}
               </Link>
             </li>

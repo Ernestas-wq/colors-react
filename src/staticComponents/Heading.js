@@ -6,7 +6,7 @@ const Heading = () => {
       <h3 className="heading__title">
         <img className="heading__logo" src={logo} alt="" />
         <p>
-          <span>c</span>o<span>ol</span>r g<span>en</span>e<span>r</span>at
+          <span>c</span>o<span>lo</span>r g<span>en</span>e<span>r</span>at
           <span>o</span>r
         </p>
       </h3>

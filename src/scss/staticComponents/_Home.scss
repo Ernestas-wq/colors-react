@@ -1,0 +1,51 @@
+.home {
+  @include main-right();
+
+  h1 {
+    text-align: center;
+    font-family: 'Redressed', cursive;
+    text-transform: capitalize;
+    font-size: 5rem;
+    span:nth-child(1),
+    span:nth-child(4) {
+      color: var(--soft_green);
+    }
+    span:nth-child(3),
+    span:nth-child(2) {
+      color: var(--soft_pink);
+    }
+    span:nth-child(5) {
+      color: var(--soft_blue);
+    }
+  }
+
+  &__container {
+    @include align-center();
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    h3 {
+      margin: 3rem 0;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--text_dark);
+    }
+
+    article p {
+      text-align: center;
+      color: var(--text_dark);
+      line-height: 1.75rem;
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+    a {
+      text-transform: uppercase;
+      @include save-button(var(--clr_main-1));
+    }
+    a:hover {
+      color: var(--white);
+      background: var(--clr_main-1);
+    }
+  }
+}

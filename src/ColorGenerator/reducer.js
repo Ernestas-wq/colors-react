@@ -21,7 +21,7 @@ const reducer = (state, action) => {
       return { ...state, colorList: action.payload };
     }
     case SET_LOADING: {
-      const newGeneratorForm = { ...state.generator, isLoading: action.payload };
+      const newGeneratorForm = { ...state.generatorForm, isLoading: action.payload };
       return { ...state, generatorForm: newGeneratorForm };
     }
     case SET_GENERATE_ERROR: {
